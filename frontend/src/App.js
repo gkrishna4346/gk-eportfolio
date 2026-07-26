@@ -1,55 +1,50 @@
-import { useEffect } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-import { HOME } from "@/constants/testIds";
+import { Toaster } from "@/components/ui/sonner";
+import useLenis from "@/hooks/useLenis";
+import Header from "@/components/site/Header";
+import Hero from "@/components/site/Hero";
+import Marquee from "@/components/site/Marquee";
+import About from "@/components/site/About";
+import Skills from "@/components/site/Skills";
+import Experience from "@/components/site/Experience";
+import Projects from "@/components/site/Projects";
+import Academic from "@/components/site/Academic";
+import Manifesto from "@/components/site/Manifesto";
+import Pipeline from "@/components/site/Pipeline";
+import Contact from "@/components/site/Contact";
+import Footer from "@/components/site/Footer";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
+function Portfolio() {
+  useLenis();
   return (
-    <div>
-      <header className="App-header">
-        <a
-          data-testid={HOME.emergentLink}
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
+    <div className="App noise-overlay bg-background text-foreground min-h-screen">
+      <Header />
+      <main>
+        <Hero />
+        <Marquee />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Academic />
+        <Manifesto />
+        <Pipeline />
+        <Contact />
+      </main>
+      <Footer />
+      <Toaster position="bottom-right" theme="dark" />
     </div>
   );
-};
+}
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Portfolio />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
