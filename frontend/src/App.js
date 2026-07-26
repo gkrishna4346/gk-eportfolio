@@ -1,6 +1,7 @@
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider, useTheme } from "@/hooks/useTheme";
 import useLenis from "@/hooks/useLenis";
 import Header from "@/components/site/Header";
 import Hero from "@/components/site/Hero";
@@ -17,6 +18,7 @@ import Footer from "@/components/site/Footer";
 
 function Portfolio() {
   useLenis();
+  const { theme } = useTheme();
   return (
     <div className="App noise-overlay bg-background text-foreground min-h-screen">
       <Header />
@@ -33,18 +35,20 @@ function Portfolio() {
         <Contact />
       </main>
       <Footer />
-      <Toaster position="bottom-right" theme="dark" />
+      <Toaster position="bottom-right" theme={theme} />
     </div>
   );
 }
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Portfolio />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Portfolio />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

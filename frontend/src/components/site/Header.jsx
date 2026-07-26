@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, FileText } from "lucide-react";
+import { Menu, X, FileText, Sun, Moon } from "lucide-react";
 import { navLinks, profile } from "@/data/portfolio";
+import { useTheme } from "@/hooks/useTheme";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -43,6 +45,14 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <button
+            data-testid="theme-toggle"
+            onClick={toggle}
+            aria-label="Toggle theme"
+            className="flex items-center justify-center h-9 w-9 border border-border text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+          >
+            {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </button>
           <a
             href={profile.resumeUrl}
             target="_blank"
