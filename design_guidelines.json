@@ -1,0 +1,153 @@
+{
+  "theme": "dark",
+  "design_vision": {
+    "concept": "Terminal Luxury / Godly Tech",
+    "description": "An award-worthy (Awwwards-style), single-page ePortfolio for an AIML Business Analyst with 17+ years of experience. The vibe is 'Modern Data/Tech' merging technical CLI/Terminal precision with high-end, luxury editorial layouts. No 'AI slop' purple gradients. High contrast, sheer blacks, 1px grid lines, and kinetic typographic reveals.",
+    "emotional_tone": "Authority, Precision, Futuristic, Elite",
+    "archetype": "Swiss & High-Contrast mixed with Retro-Futurism"
+  },
+  "typography": {
+    "headings": {
+      "fontFamily": "'Cabinet Grotesk', sans-serif",
+      "usage": "H1, H2, H3, large display text. Must use tight letter spacing (tracking-tight) for impact. NO Inter/Space Grotesk."
+    },
+    "body": {
+      "fontFamily": "'IBM Plex Sans', sans-serif",
+      "usage": "Paragraphs, long-form reading, contact form labels. Provides a clean, slightly technical structure."
+    },
+    "accents": {
+      "fontFamily": "'JetBrains Mono', monospace",
+      "usage": "Numbers, data metrics (95%+, 20%), terminal prompts, code snippets, section numbers (01, 02), and UI labels. Gives the 'data/tech' credibility."
+    },
+    "scale": {
+      "h1": "text-5xl md:text-7xl font-bold tracking-tighter leading-none",
+      "h2": "text-4xl md:text-5xl font-semibold tracking-tight",
+      "h3": "text-2xl md:text-3xl font-medium",
+      "body": "text-base md:text-lg text-muted-foreground leading-relaxed",
+      "mono_accent": "text-xs md:text-sm uppercase tracking-[0.2em] text-primary"
+    }
+  },
+  "colors": {
+    "palette": {
+      "background": "hsl(240, 10%, 4%)",
+      "foreground": "hsl(0, 0%, 95%)",
+      "card": "hsl(240, 10%, 6%)",
+      "border": "hsl(240, 10%, 15%)",
+      "primary": "hsl(180, 100%, 50%)",
+      "primary_foreground": "hsl(240, 10%, 4%)",
+      "secondary": "hsl(150, 100%, 50%)",
+      "secondary_foreground": "hsl(240, 10%, 4%)",
+      "muted": "hsl(240, 10%, 12%)",
+      "muted_foreground": "hsl(240, 5%, 65%)"
+    },
+    "usage_rules": {
+      "base": "Deep Obsidian (240 10% 4%) is the core background. Never use pure black.",
+      "accents": "Use Cyan (180 100% 50%) for primary interactions and links. Use Matrix Green (150 100% 50%) strictly for terminal/code emulation sections (like the PIN gate).",
+      "borders": "Exposed grid aesthetic. Use 1px borders (border-border) extensively to create a blueprint/dashboard feel.",
+      "gradients": "BANNED: No purple/pink SaaS gradients. ALLOWED: Subtle black-to-transparent fades for masking."
+    }
+  },
+  "layouts": {
+    "spacing_system": "Generous. Use py-24 to py-32 for section padding. Internal card padding should be p-8 to p-12.",
+    "grid_strategy": {
+      "bento": "Use asymmetrical bento grids for the 'About' and 'Pipeline' sections. Mix 2-col and 1-col spans.",
+      "exposed_skeleton": "Container should have border-collapse style layout. Items have subtle borders on right and bottom of every grid item."
+    }
+  },
+  "visual_enhancers": {
+    "glassmorphism": "Used ONLY for sticky header. backdrop-blur-xl bg-black/50 with a 1px border-b.",
+    "textures": "Add a subtle SVG noise overlay (mix-blend-overlay, opacity 5%) over the entire page to kill the digital flatness.",
+    "borders": "Sharp corners or very subtle radius (max rounded-md / 6px). Avoid heavily rounded bubbly corners."
+  },
+  "sections_blueprint": [
+    {
+      "name": "Header / Nav",
+      "details": "Sticky glassmorphism header. Left: 'GR_' monospace logo. Right: Nav links (01. About, 02. Skills, etc.) + Resume CTA button.",
+      "components": ["NavigationMenu", "Button"]
+    },
+    {
+      "name": "Hero Section",
+      "details": "Kinetic text reveal on load. Huge 'Gopikrishna Rajendran'. Sub: 'Assistant Manager | AIML - Business Analyst'. Include the professional headshot using a stark clipping mask or inner glow frame. Background: Abstract dotted sphere 3D aesthetic.",
+      "components": ["framer-motion (line-by-line reveal)"]
+    },
+    {
+      "name": "About / Profile",
+      "details": "Bento grid layout. 17+ Years ITES metric highlighted in massive monospace. Languages mapped as data points.",
+      "components": ["Card"]
+    },
+    {
+      "name": "Skills Grid",
+      "details": "Code-inspired execution. Terminal window UI wrapping skills (Python, Streamlit, PostgreSQL, Tableau, GenAI). Typing animation effect.",
+      "components": ["Card", "Badge"]
+    },
+    {
+      "name": "Experience Timeline",
+      "details": "Vertical timeline spanning TCS, Cognizant, Oracle, RNTBCI, HSBC. KPIs (95%+ accuracy, 20% savings) highlighted in Cyan.",
+      "components": ["Timeline (Custom SVG/div lines)"]
+    },
+    {
+      "name": "Live Projects",
+      "details": "Grid of 9 deployed Streamlit/HF apps. 1px bordered cards. Hover state reveals abstract data texture and external link icon.",
+      "components": ["Card", "HoverEffect"]
+    },
+    {
+      "name": "Academic Projects (PIN Gated)",
+      "details": "Terminal-style lock screen. User must enter 4-digit PIN. Shows blinking cursor `> ENTER PIN: _`. Unlocks a gallery of 12+ items. Uses Matrix Green accent.",
+      "components": ["Input", "Dialog / Conditional Rendering"]
+    },
+    {
+      "name": "Pipeline / Upcoming",
+      "details": "Categorized via Tabs: Projects, Games, Hobbies (Rubik's cube, Sketching, Cooking).",
+      "components": ["Tabs"]
+    },
+    {
+      "name": "Manifesto & Marquee",
+      "details": "Numbered chapters (01. Data, 02. Insight). Slow editorial marquee scrolling horizontally with key mantras.",
+      "components": ["Marquee (react-fast-marquee)"]
+    },
+    {
+      "name": "Contact & Socials",
+      "details": "Working contact form. Monospace label styling. Links for LinkedIn, GitHub, HuggingFace, Email.",
+      "components": ["Form", "Input", "Textarea", "Button"]
+    }
+  ],
+  "motion": {
+    "scrolling": "Smooth momentum scrolling using @studio-freight/lenis is MANDATORY.",
+    "reveals": "Use framer-motion for viewport triggers. Fade up and slight y-axis translation on scroll. Staggered children for grids.",
+    "hover_states": "Interactive elements must shift text color and background. Cards should have a subtle 1px border color change (border-border to border-primary) on hover."
+  },
+  "component_instructions": {
+    "shadcn": [
+      "Input / Textarea: Remove default Vercel glow. Use stark 1px border, bg-transparent, focus:border-primary focus:ring-0.",
+      "Button: Sharp corners, highly technical. Primary buttons: bg-primary text-black hover:bg-white hover:text-black transition-colors.",
+      "Card: Remove shadow, use bg-card, 1px border-border, rounded-none or rounded-sm."
+    ],
+    "testing": "All interactive elements (buttons, inputs, PIN gate) MUST include data-testid attribute (e.g., data-testid='pin-input')."
+  },
+  "media_and_assets": {
+    "icons": "Use @phosphor-icons/react or lucide-react (Duotone or regular weight, very precise).",
+    "images": {
+      "headshot": {
+        "url": "USE_REAL_PROVIDED_HEADSHOT",
+        "description": "User's real professional photo, treated with a dark background or clipping mask to blend into the theme."
+      },
+      "abstract_cubes": {
+        "url": "https://images.unsplash.com/photo-1639322537228-f710d846310a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHw0fHxkYXJrJTIwYWJzdHJhY3QlMjBkYXRhJTIwbmV0d29yayUyMHRlY2hub2xvZ3klMjB0ZXh0dXJlfGVufDB8fHxibGFja3wxNzg1MDY2NDg4fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract blockchain/data cubes. Use for Project backgrounds or Skills section textures."
+      },
+      "abstract_sphere": {
+        "url": "https://images.unsplash.com/photo-1718844054440-22acf5d5c8f0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwxfHxkYXJrJTIwYWJzdHJhY3QlMjBkYXRhJTIwbmV0d29yayUyMHRlY2hub2xvZ3klMjB0ZXh0dXJlfGVufDB8fHxibGFja3wxNzg1MDY2NDg4fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Dotted 3D sphere. Excellent for Hero section background or Manifesto overlay. Apply opacity-20."
+      }
+    }
+  },
+  "universal_guidelines_for_main_agent": [
+    "DO NOT output generic centered layouts or bubbly soft shadows.",
+    "NO universal CSS transitions (e.g., transition: all). Target specific properties.",
+    "Text readability is paramount: Ensure high contrast ratios (APCA/WCAG AA).",
+    "Never use purely transparent backgrounds under text that overlaps images/scrolling content.",
+    "Include data-testid on every clickable or form element.",
+    "Ensure UI is strictly dark-theme by default (class='dark').",
+    "Do not hallucinate logos. Use icon libraries for tech stack logos (react-icons/si) or standard text if unavailable."
+  ]
+}
