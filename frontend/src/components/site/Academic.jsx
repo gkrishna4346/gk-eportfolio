@@ -1,11 +1,28 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { OTPInputContext } from "input-otp";
 import { toast } from "sonner";
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
 import { academicProjects } from "@/data/portfolio";
 import { verifyPin } from "@/lib/api";
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+import { InputOTP, InputOTPGroup } from "@/components/ui/input-otp";
 import { Lock, LockOpen, FileText, ArrowUpRight } from "lucide-react";
+
+function MaskedSlot({ index, error, ...props }) {
+  const ctx = useContext(OTPInputContext);
+  const { char, isActive } = ctx.slots[index];
+  return (
+    <div
+      {...props}
+      className={`relative flex h-14 w-12 items-center justify-center rounded-none border bg-background text-2xl leading-none transition-colors ${
+        error ? "border-destructive" : isActive ? "border-primary" : "border-secondary/40"
+      }`}
+    >
+      {char ? <span className="text-secondary">*</span> : isActive ? <span className="cursor-blink text-secondary">|</span> : null}
+    </div>
+  );
+}
+
 
 export default function Academic() {
   const [unlocked, setUnlocked] = useState(false);
@@ -90,13 +107,11 @@ export default function Academic() {
                       >
                         <InputOTPGroup className="gap-3">
                           {[0, 1, 2, 3].map((idx) => (
-                            <InputOTPSlot
+                            <MaskedSlot
                               key={idx}
                               index={idx}
+                              error={error}
                               data-testid={`pin-slot-${idx}`}
-                              className={`h-14 w-12 text-xl font-mono-accent rounded-none border ${
-                                error ? "border-destructive" : "border-secondary/40"
-                              } bg-background`}
                             />
                           ))}
                         </InputOTPGroup>
