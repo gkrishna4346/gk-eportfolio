@@ -141,6 +141,13 @@ export const liveProjects = [
     signature: true,
   },
   {
+    name: "Paper Mind : AI",
+    blurb: "PDF Reader and RAG-style Q&A assistant answering any questions from the uploaded documents.",
+    tags: ["GenAI", "RAG", "NLP"],
+    link: "https://paper-mind-ai.onrender.com/",
+    signature: true,
+  },
+  {
     name: "Predictive Maintenance",
     blurb: "Capstone ML app forecasting equipment failure to reduce downtime.",
     tags: ["ML", "Streamlit", "Capstone"],
